@@ -1,6 +1,7 @@
 package com.multi.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,8 +43,8 @@ public class CartService implements MyService<Integer, CartDTO>{
 		return mapper.selectall();
 	}
 	
-	public List<CartDTO> cartall(String userid) throws Exception {
-		return mapper.cartall(userid);
+	public List<CartDTO> usercart(String userid) throws Exception {
+		return mapper.usercart(userid);
 	}
 
 }

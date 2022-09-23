@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 어디를 통해서 들어오는지! -->
+<!-- 주문상세는 update,insert가 필요 없음! -->
+<mapper namespace="com.multi.mapper.FinalOrderMapper">
+	
+	<select id="select" parameterType="Integer" resultType="FinalOrderDTO">
+		<!-- 수정할 것 -->
+		SELECT * FROM finalorder WHERE finalid=#{finalid}
+	</select>
+	<select id="selectall" resultType="FinalOrderDTO">
+		<!-- 수정할 것 -->
+		SELECT * FROM finalorder
+	</select>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM finalorder WHERE finalid=#{finalid}
+	</delete>
+	
+</mapper>

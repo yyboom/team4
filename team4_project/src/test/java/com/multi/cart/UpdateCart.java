@@ -8,17 +8,16 @@ import com.multi.dto.CartDTO;
 import com.multi.service.CartService;
 
 @SpringBootTest
-class GetCart {
+class UpdateCart {
 
 	@Autowired
 	CartService service;
 	
 	@Test
 	void contextLoads() {
-		CartDTO cart = null;
+		CartDTO cart = new CartDTO(4001, null, 1006, 4, null, null, 0, 0);
 		try {
-			cart = service.get(4000);
-			System.out.println(cart);
+			service.modify(cart);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,3 +25,4 @@ class GetCart {
 	}
 
 }
+

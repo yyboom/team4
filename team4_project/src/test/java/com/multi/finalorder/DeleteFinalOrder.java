@@ -1,24 +1,21 @@
-package com.multi.cart;
+package com.multi.finalorder;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.CartDTO;
-import com.multi.service.CartService;
+import com.multi.service.FinalOrderService;
 
 @SpringBootTest
-class GetCart {
+class DeleteFinalOrder {
 
 	@Autowired
-	CartService service;
+	FinalOrderService service;
 	
 	@Test
 	void contextLoads() {
-		CartDTO cart = null;
 		try {
-			cart = service.get(4000);
-			System.out.println(cart);
+			service.remove(3000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
