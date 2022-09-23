@@ -6,6 +6,7 @@ public class Test01 {
 		System.out.println("제발되라");
 		System.out.println("test");
 		System.out.println("test01");
+		System.out.println("test02");
 	}
 
 }
