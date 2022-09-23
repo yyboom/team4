@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.multi.dto.CustDTO;
 import com.multi.dto.OrderDTO;
 import com.multi.frame.MyService;
 import com.multi.mapper.OrderMapper;
@@ -45,7 +46,13 @@ public class OrderService implements MyService<Integer,OrderDTO> {
 	@Override
 	public List<OrderDTO> get() throws Exception {
 		
-		return mapper.selectall();
+		return null;
 	}
 
+	public List<OrderDTO> orderall(int itemid) throws Exception {
+		return mapper.orderall(itemid);
+	}
+
+	
+	
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.OrderMapper">
+	<!-- ORDERPAGE JOIN CUST TABLE -->
+	<select id="select" parameterType="Integer" resultType="OrderDTO">
+		SELECT op.orderid,op.userid,cu.username as username,op.price as orderprice,op.pay,op.totalcnt,op.orderaddr,op.people FROM orderpage op
+		INNER JOIN cust cu ON op.userid=cu.userid
+		WHERE orderid=#{orderid}
+	</select>
+	<!--<select id="selectall" resultType="OrderDTO">
+		
+	</select>-->
+	<insert id="insert" parameterType="OrderDTO">
+		INSERT INTO orderpage VALUES (NULL,#{orederid},#{userid},#{itemid},#{orderprice},#{pay},
+		NOW(),#{orderaddr},#{totalcnt},#{phonenum},#{people} )
+	</insert>
+	<update id="update" parameterType="OrderDTO">
+		UPDATE orderpage SET orderaddr=#{orderaddr},people=#{people} WHERE orderid=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM orderpage WHERE orderid=#{id}
+	</delete>
+		<!--ORDERPAGE JOIN CUST,ITEM TABLE. ITEM STATUS함께 조회  -->
+		<select id="orderall" parameterType="Integer" resultType="OrderDTO">
+		SELECT cu.username as username,cu.userid as userid,op.orderid,it.itemname as itemname,op.price as orderprice ,op.pay,op.totalcnt,it.itemstatus as itemstatus
+		FROM orderpage op
+		INNER JOIN cust cu ON op.userid =cu.userid
+		INNER JOIN item it ON op.itemid=it.itemid
+		WHERE op.orderid=#{orderid}
+	</select>
+	
+	
+	
+</mapper>

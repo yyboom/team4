@@ -19,19 +19,25 @@ public class OrderDTO {
 
 	// ERD 기반 ORDERPAGE 조회목록
 	private int orderid;
+	private String userid;
+	private int itemid;
 	private int orderprice;
 	private String pay;
 	private Date bdate;
 	private String orderaddr;
+	private int totalcnt;
 	private String phonenum;
 	private String people;
-	private int totalcnt;
 	
 	
 	
 	// JOIN 문을 위한 컬럼 = CUST기반
 	
-	private String userid;
+	
+	private String username;
+	private String itemname;
+	private String itemstatus;
+	
 	
 	
 }
