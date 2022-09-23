@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ShippingMapper">
+	
+	<select id="select" parameterType="Integer" resultType="shippingDTO">
+		SELECT s.shipid, s.orderid, s.stats, s.shipdate,o.orderaddr AS order_addr, o.people AS recipient_people FROM shipping s
+		INNER JOIN orderpage o ON s.orderid = o.orderid
+		WHERE s.shipid = #{shipid}
+	</select>
+	<select id="selectall" resultType="shippingDTO">
+		SELECT s.shipid, s.orderid, s.stats, s.shipdate,o.orderaddr AS order_addr, o.people AS recipient_people FROM shipping s
+		INNER JOIN orderpage o ON s.orderid = o.orderid
+		
+	</select>
+	<insert id="insert" parameterType="shippingDTO">
+		INSERT INTO shipping VALUES (NULL,#{orderid},#{stats},#{shipdate})
+	</insert>
+	<update id="update" parameterType="shippingDTO">
+		UPDATE shipping SET orderid=#{orderid},stats=#{stats},shipdate=#{shipdate} WHERE shipid=#{shipid}
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM shipping WHERE shipid=#{shipid}
+	</delete>
+	
+</mapper>

@@ -18,7 +18,7 @@ public class ShippingDTO {
 		private int shipid;
 		private int orderid;
 		private String stats;
-		private Date shipdate;
+		private String shipdate;
 		
 		private String order_addr;
 		private String recipient_people;
