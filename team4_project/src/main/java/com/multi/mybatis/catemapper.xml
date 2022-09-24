@@ -5,16 +5,26 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CateMapper">
 	
 	<select id="select" parameterType="Integer" resultType="cateDTO">
-		SELECT * FROM cate WHERE cateid=#{cateid}
+		SELECT ca.cateid, ca.topid, ca.catename as name, it.itemname as item_name from cate ca
+		INNER JOIN item it ON ca.catename = it.itemname
+		WHERE ca.cateid=#{ca.cateid}
+		ORDER BY ca.cateid ASC
+	
 	</select>
 	<select id="selectall" resultType="cateDTO">
-		SELECT * FROM cate
+		SELECT c1.cateid, c1.topid, c1.catename as name, c2.cateid, c2.topid, 
+		c2.catename as name, it.itemname as item_name FROM cate c1 
+		INNER JOIN cate c2 ON c1.topid = c2.cateid
+		INNER JOIN item it ON c1.catename = it.itemname
+		ORDER BY c1.cateid ASC
+        
+		
 	</select>
 	<insert id="insert" parameterType="cateDTO">
 		INSERT INTO cate VALUES (#{cateid},#{topid},#{name})
 	</insert>
 	<update id="update" parameterType="cateDTO">
-		UPDATE cate SET topid=#{topid},name=#{name} WHERE cateid=#{cateid}
+		UPDATE cate SET topid=#{topid},catename=#{name} WHERE cateid=#{cateid}
 	</update>
 	<delete id="delete" parameterType="Integer">
 		DELETE FROM cate WHERE cateid=#{cateid}

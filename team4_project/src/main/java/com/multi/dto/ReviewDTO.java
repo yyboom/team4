@@ -15,11 +15,11 @@ public class ReviewDTO {
 		
 	private int reviewid;
 	private int itemid;
-	private int userid;
+	private String userid;
 	private int rating;
-	private int content;
+	private String content;
 	
-	private String username;
-	private String itemname;
+	private String user_name;
+	private String item_name;
 	private int size;
 }

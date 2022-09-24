@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ReviewMapper">
+	
+	<select id="select" parameterType="Integer" resultType="ReviewDTO">
+		SELECT re.reviewid, re.itemid, re.userid, cu.username AS user_name, re.rating,re.content, 
+ 		it.itemname AS item_name, it.size FROM review re
+		INNER JOIN item it ON re.itemid = it.itemid
+		INNER JOIN cust cu ON re.userid = cu.userid
+		WHERE reviewid = #{reviewid}
+		ORDER BY re.reviewid ASC
+		
+	</select>
+	<select id="selectall" resultType="ReviewDTO">
+		SELECT re.reviewid, re.itemid, re.userid, cu.username AS user_name, re.rating,re.content, 
+ 		it.itemname AS item_name, it.size FROM review re
+		INNER JOIN item it ON re.itemid = it.itemid
+		INNER JOIN cust cu ON re.userid = cu.userid
+		ORDER BY re.reviewid ASC
+		
+	</select>
+	<insert id="insert" parameterType="ReviewDTO">
+		INSERT INTO review VALUES (NULL,#{itemid}, #{userid}, #{rating}, #{content})
+	</insert>
+	<update id="update" parameterType="ReviewDTO">
+		UPDATE review SET itemid = #{itemid}, userid = #{userid}, rating = #{rating}, 
+		content=#{content} WHERE reviewid = #{reviewid}
+		
+	</update>
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM review WHERE reviewid = #{reviewid}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+

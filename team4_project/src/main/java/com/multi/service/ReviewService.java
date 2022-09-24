@@ -1,20 +1,23 @@
 package com.multi.service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.multi.dto.CateDTO;
+import com.multi.dto.ReviewDTO;
 import com.multi.frame.MyService;
-import com.multi.mapper.CateMapper;
+import com.multi.mapper.ReviewMapper;
 
-public class ReviewService implements MyService<Integer,CateDTO> {
+@Service
+public class ReviewService implements MyService<Integer,ReviewDTO> {
 
 	@Autowired
-	CateMapper mapper;
+	ReviewMapper mapper;
 	
 	@Override
-	public void register(CateDTO v) throws Exception {
+	public void register(ReviewDTO v) throws Exception {
 		mapper.insert(v);
 		
 	}
@@ -26,19 +29,19 @@ public class ReviewService implements MyService<Integer,CateDTO> {
 	}
 
 	@Override
-	public void modify(CateDTO v) throws Exception {
+	public void modify(ReviewDTO v) throws Exception {
 		mapper.update(v);
 		
 	}
 
 	@Override
-	public CateDTO get(Integer k) throws Exception {
+	public ReviewDTO get(Integer k) throws Exception {
 		
 		return mapper.select(k);
 	}
 
 	@Override
-	public List<CateDTO> get() throws Exception {
+	public List<ReviewDTO> get() throws Exception {
 		
 		return mapper.selectall();
 	}
