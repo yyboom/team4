@@ -46,5 +46,10 @@ public class CartService implements MyService<Integer, CartDTO>{
 	public List<CartDTO> usercart(String userid) throws Exception {
 		return mapper.usercart(userid);
 	}
+	
+	/*
+	 * public CartDTO selectcart(String userid) { return mapper.selectcart(userid);
+	 * }
+	 */
 
 }

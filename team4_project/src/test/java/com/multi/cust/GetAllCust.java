@@ -1,27 +1,34 @@
-package com.multi.order;
+package com.multi.cust;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.OrderDTO;
-import com.multi.service.OrderService;
+import com.multi.dto.CustDTO;
+import com.multi.service.CustService;
 
 @SpringBootTest
-class UpdateOrder {
+class GetAllCust {
 
 	@Autowired
-	OrderService service;
+	CustService service;
 	
 	@Test
 	void contextLoads() {
-		OrderDTO order = new OrderDTO(0, null, 0, 0, null, null, null, 0, null, null, null, null, null);
+		List<CustDTO> list = null;
 		try {
-			service.modify(order);
+			list =service.get();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		for(CustDTO o:list) {
+			System.out.println(o);
+		}
+		
 	}
 
 }

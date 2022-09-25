@@ -14,7 +14,7 @@ public interface CartMapper extends MyMapper<Integer,CartDTO> {
 	public List<CartDTO> usercart(String userid) throws Exception;
 	
 	//selectcart에서 가져오고 싶은 것만 가져올때
-	//public List<String> selectcart(String userid) throws Exception;
+	//public selectcart selectcart(String userid);
 
 
 	

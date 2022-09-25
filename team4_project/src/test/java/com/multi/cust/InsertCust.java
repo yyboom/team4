@@ -1,35 +1,27 @@
-package com.multi.cart;
-
-import java.util.List;
+package com.multi.cust;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.dto.CartDTO;
-import com.multi.service.CartService;
-
+import com.multi.dto.CustDTO;
+import com.multi.service.CustService;
 
 @SpringBootTest
-class Cartall {
+class InsertCust {
 
 	@Autowired
-	CartService service;
+	CustService service;
 	
 	@Test
 	void contextLoads() {
-		List<CartDTO> list = null;
+		CustDTO order = new CustDTO(null, 0, null, null, null, null, null, 0, null);
 		try {
-			list = service.cartall("id01");
+			service.register(order);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for(CartDTO c:list) {
-			System.out.println(c);
-		}
-		
 	}
 
 }

@@ -15,7 +15,7 @@ class InsertOrder {
 	
 	@Test
 	void contextLoads() {
-		OrderDTO order = new OrderDTO();
+		OrderDTO order = new OrderDTO(0, null, 0, 0, null, null, null, 0, null, null, null, null, null);
 		try {
 			service.register(order);
 		} catch (Exception e) {

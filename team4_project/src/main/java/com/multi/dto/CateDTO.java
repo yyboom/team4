@@ -1,6 +1,5 @@
 package com.multi.dto;
 
-import java.util.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

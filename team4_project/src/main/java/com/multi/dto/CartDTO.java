@@ -27,5 +27,10 @@ public class CartDTO {
 	//put in after calculation
 	private int total_price;//amount(cart)*itemprice(item)
 	
+	//overloading
+	public void selectcart(int cartid, String userid) {
+		this.cartid=cartid;
+		this.userid=userid;
+	}
 
 }

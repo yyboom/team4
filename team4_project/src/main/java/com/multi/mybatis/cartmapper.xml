@@ -13,11 +13,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cust c ON ca.userid = c.userid
 		WHERE ca.cartid=#{cartid}
 	</select>
-	<!-- <select id="selectall" resultType="CartDTO">
-		SELECT ca.id, ca.user_id, c.name AS cust_name,ca.item_id, i.name AS item_name, i.price, ca.cnt, i.price*ca.cnt AS total_price, ca.rdate FROM cart ca
-		INNER JOIN cust c ON c.id=ca.user_id
-		INNER JOIN item i ON i.id=ca.item_id
-</select> -->
+	<select id="selectcart"  parameterType="String" resultType="CartDTO">
+		SELECT ca.cartid, ca.userid FROM cart ca
+		INNER JOIN item i ON ca.itemid = i.itemid
+		INNER JOIN cust c ON ca.userid = c.userid
+		WHERE ca.userid=#{userid}
+	</select>
 	<!-- 사용자의 cart정보를 가져와라 -->
 	<select id="usercart" parameterType="String" resultType="CartDTO">
 		SELECT ca.cartid, ca.userid, c.username As user_name, ca.itemid, i.itemname AS item_name, i.itemprice AS item_price, ca.amount, (ca.amount * i.itemprice) AS total_price
